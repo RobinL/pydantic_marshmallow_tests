@@ -24,3 +24,9 @@ It's possible to add arbitrary validation, such as on enums, or checking 0 < val
 ### Automatic json schema
 
 A [jsonschema](https://json-schema.org/draft/2020-12/release-notes) compatible json schema can be generated with `settings.model_json_schema()`
+
+## Marshmallow comparison
+
+> It was created before there existed Python type hints. So, to define every schema you need to use specific utils and classes provided by Marshmallow. [link](https://fastapi.tiangolo.com/tr/alternatives/#marshmallow)
+
+> [Pydantic] is comparable to Marshmallow. Although it's faster than Marshmallow in benchmarks. And as it is based on the same Python type hints, the editor support is great. [link](https://fastapi.tiangolo.com/tr/alternatives/#pydantic)
