@@ -49,3 +49,4 @@ settings = Settings(
 
 # How does this work with undialected?  i.e. our ComparisonCreator?
 settings.comparisons
+print(settings.model_json_schema())
