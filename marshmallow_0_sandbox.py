@@ -19,4 +19,6 @@ class UserSchema(Schema):
     created_at = fields.DateTime()
 
 
-UserSchema(na)
+user = User(name="Monty", email="monty@python.org")
+schema = UserSchema()
+schema.dump(user)
