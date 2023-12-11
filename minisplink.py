@@ -86,7 +86,7 @@ class Settings(BaseModel):
 
 settings = Settings(
     probability_two_random_records_match=0.01,
-    link_type="link_only2",
+    link_type="link_only",
     comparisons=[comparison_1, comparison_2],
 )
 
@@ -94,3 +94,34 @@ s = settings.model_dump(exclude_unset=True)
 settings.model_dump_json(indent=4)
 
 settings.comparisons[0].comparison_levels[0].columns_used
+
+# Illustration of loading settings
+settings.model_dump(exclude_unset=True)
+
+settings = {
+    "probability_two_random_records_match": 0.01,
+    "link_type": "link_only",
+    "comparisons": [
+        {
+            "output_column_name": "name_match",
+            "comparison_levels": [
+                {
+                    "sql_condition": "name_l = name_r",
+                    "label_for_charts": "Exact match on name",
+                },
+                {"sql_condition": "else", "label_for_charts": "All others"},
+            ],
+            "comparison_description": "This is a comparison",
+        },
+        {
+            "output_column_name": "dob_match",
+            "comparison_levels": [
+                {"sql_condition": "dob_l is NULL"},
+                {"sql_condition": "dob_l = dob_r"},
+            ],
+            "comparison_description": "A second comparison",
+        },
+    ],
+}
+
+validated_settings = Settings(**settings)
